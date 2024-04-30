@@ -11,7 +11,8 @@
         <Button x:Name="generateBadge" Content="Generate Badge" HorizontalAlignment="Left" Margin="365,55,0,0" VerticalAlignment="Top" Width="96"/>
         <TextBlock HorizontalAlignment="Left" Margin="48,12,0,0" TextWrapping="Wrap" Text="Employee Number:" VerticalAlignment="Top" FontWeight="Bold"/>
         <TextBlock HorizontalAlignment="Left" Margin="48,59,0,0" TextWrapping="Wrap" Text="Employee Number:" VerticalAlignment="Top" FontWeight="Bold"/>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="48,80,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="getPhotoFileLocation" Content="Button" HorizontalAlignment="Left" Margin="48,80,0,0" VerticalAlignment="Top" Click="getPhotoFileLocation_Click"/>
+        <TextBlock x:Name="fileName" HorizontalAlignment="Left" Margin="107,80,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top"/>
 
     </Grid>
 </Window>
