@@ -17,6 +17,8 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Path = System.IO.Path;
 
+
+
 namespace BadgeGenerator
 {
 
@@ -42,24 +44,85 @@ namespace BadgeGenerator
             if ((bool)openFileDialog.ShowDialog())
             {
                 string filename = openFileDialog.FileName;
-                using (Bitmap image = new Bitmap(filename))
+                using (Bitmap originalImage = new Bitmap(filename))
                 {
-
-   
                     int requiredWidth = (int)(widthMax * dpiX);
                     int requiredHeight = (int)(heightMax * dpiX);
 
-                    
-                    if (image.Width != requiredWidth || image.Height != requiredHeight)
+
+                    using (Bitmap resizedImage = new Bitmap(originalImage, requiredWidth, requiredHeight))
                     {
-                        MessageBox.Show("The image size must be exactly 2.13 x 3.38 inches.", "Invalid Image Size", MessageBoxButton.OK, MessageBoxImage.Error);
-                    }
-                    else
-                    {
+                        photoImage.Source = ResizeImage(resizedImage);
                         fileName.Text = Path.GetFileName(filename);
+                        nameCheck.Background = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Colors.Green);
+
                     }
                 }
             }
+        }
+
+
+        private BitmapImage ResizeImage(Bitmap bitmap)
+        {
+            using (MemoryStream memory = new MemoryStream())
+            {
+                bitmap.Save(memory, System.Drawing.Imaging.ImageFormat.Png);
+                memory.Position = 0;
+                BitmapImage bitmapImage = new BitmapImage();
+                bitmapImage.BeginInit();
+                bitmapImage.StreamSource = memory;
+                bitmapImage.CacheOption = BitmapCacheOption.OnLoad;
+                bitmapImage.EndInit();
+                return bitmapImage;
+            }
+        }
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+     
+
+           
+            if (System.Text.RegularExpressions.Regex.IsMatch(empNumber.Text, @"\D"))
+            {
+
+                empCheck.Background = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Colors.Red);
+            }
+            else
+            {
+
+                empCheck.Background = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Colors.Green);
+            }
+
+        }
+
+        private void empName_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if(string.IsNullOrWhiteSpace(empNumber.Text))
+            {
+                nameCheck.Background = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Colors.Red);
+            }
+            else
+            {
+
+                nameCheck.Background = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Colors.Green);
+            }
+        }
+
+        private void generateBadge_Click(object sender, RoutedEventArgs e)
+        {
+            string employeeName = empName.Text; 
+            string employeeNumber = empNumber.Text;
+            ImageSource empImage = photoImage.Source;
+
+            if (empImage != null || string.IsNullOrWhiteSpace(employeeNumber) || string.IsNullOrWhiteSpace(employeeName)) {
+                MessageBox.Show("Please fill all the boxes");
+            }
+            else
+            {
+                Employee generateBadge = new Employee(employeeName, employeeNumber, empImage);
+
+            }
+            
         }
     }
 }
