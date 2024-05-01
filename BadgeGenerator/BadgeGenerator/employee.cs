@@ -8,12 +8,33 @@ using System.Windows.Media;
 
 namespace BadgeGenerator
 {
-    internal class Employee
+    public class Employee
     {
 
         private string empName;
         private string empNumber;
         private ImageSource empImage;
+
+
+        public string EmpName
+        {
+            get { return empName; }
+            set { empName = value; }  
+        }
+
+        
+        public string EmpNumber
+        {
+            get { return empNumber; }
+            set { empNumber = value; }  
+        }
+
+      
+        public ImageSource EmpImage
+        {
+            get { return empImage; }
+            set { empImage = value; }
+        }
 
         public Employee(string employeeName, string employeeNumber, ImageSource image)
         {

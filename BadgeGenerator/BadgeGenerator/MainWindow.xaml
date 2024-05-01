@@ -13,12 +13,16 @@
         <TextBlock HorizontalAlignment="Left" Margin="42,101,0,0" TextWrapping="Wrap" Text="Employee Photo:" VerticalAlignment="Top" FontWeight="Bold"/>
         <Button x:Name="getPhotoFileLocation" Content="Button" HorizontalAlignment="Left" Margin="42,122,0,0" VerticalAlignment="Top" Click="getPhotoFileLocation_Click" RenderTransformOrigin="0.303,0.553"/>
         <TextBlock x:Name="fileName" HorizontalAlignment="Left" Margin="107,122,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5"/>
-        <Image x:Name="photoImage" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="308,101,0,0" Width="204" Height="324"/>
+        <Border BorderBrush="Black" BorderThickness="2" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="306,99,0,0">
+            <Image x:Name="photoImage" Width="204" Height="324"/>
+        </Border>
         <TextBlock HorizontalAlignment="Left" Margin="48,59,0,0" TextWrapping="Wrap" Text="Name:" VerticalAlignment="Top" FontWeight="Bold"/>
         <TextBox x:Name="empName" HorizontalAlignment="Left" Margin="42,78,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" TextChanged="empName_TextChanged"/>
         <CheckBox x:Name="empCheck" Content="" HorizontalAlignment="Left" Margin="174,34,0,0" VerticalAlignment="Top" IsHitTestVisible="False"/>
         <CheckBox x:Name="nameCheck" Content="" HorizontalAlignment="Left" Margin="174,79,0,0" VerticalAlignment="Top" IsHitTestVisible="False"/>
         <CheckBox x:Name="imageCheck" Content="" HorizontalAlignment="Left" Margin="142,102,0,0" VerticalAlignment="Top" IsHitTestVisible="False"/>
+        <Button x:Name="btnClear" Content="Clear" HorizontalAlignment="Left" Margin="37,310,0,0" VerticalAlignment="Top" Width="49" Click="btnClear_Click"/>
+        <Button x:Name="btnPrint" Content="Print" HorizontalAlignment="Left" Margin="37,344,0,0" VerticalAlignment="Top" Width="49" RenderTransformOrigin="0.163,0.804" Click="btnPrint_Click"/>
 
 
     </Grid>
