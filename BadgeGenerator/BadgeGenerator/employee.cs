@@ -13,6 +13,7 @@ namespace BadgeGenerator
 
         private string empName;
         private string empNumber;
+        private string empBarcode;
         private ImageSource empImage;
 
 
@@ -29,6 +30,12 @@ namespace BadgeGenerator
             set { empNumber = value; }  
         }
 
+        public string EmpBarcode
+        {
+            get { return empBarcode; } 
+            set { empBarcode = value; }
+        }
+
       
         public ImageSource EmpImage
         {
@@ -36,10 +43,12 @@ namespace BadgeGenerator
             set { empImage = value; }
         }
 
-        public Employee(string employeeName, string employeeNumber, ImageSource image)
+        public Employee(string employeeName, string employeeNumber,string barcodeNumber, ImageSource image)
         {
+
             this.empName = employeeName;
             this.empNumber = employeeNumber;
+            this.empBarcode = barcodeNumber;
             this.empImage = image;
         }
     }
