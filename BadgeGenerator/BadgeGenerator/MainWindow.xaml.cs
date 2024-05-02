@@ -50,6 +50,28 @@ namespace BadgeGenerator
         public MainWindow()
         {
             InitializeComponent();
+            LoadSettings();
+        }
+
+        private void LoadSettings()
+        {
+            string filePath = "settings.txt";
+            try
+            {
+                if (File.Exists(filePath))
+                {
+                    logoPath = File.ReadAllText(filePath);
+                    chkDefaultPath.IsChecked = true;
+                }
+                else
+                {
+                    chkDefaultPath.IsChecked = false;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Failed to load settings: " + ex.Message);
+            }
         }
 
         private void getPhotoFileLocation_Click(object sender, RoutedEventArgs e)
@@ -320,28 +342,27 @@ namespace BadgeGenerator
 
         private FixedDocument CreateFixedDocument(BitmapImage image)
         {
-            // Create a new fixed document
-            FixedDocument fixedDoc = new FixedDocument();
-            fixedDoc.DocumentPaginator.PageSize = new Size(96 * 8.5, 96 * 11); // Letter size in 96 DPI
 
-            // Create a page content and a FixedPage
+            FixedDocument fixedDoc = new FixedDocument();
+            fixedDoc.DocumentPaginator.PageSize = new Size(96 * 8.5, 96 * 11); 
+
+         
             PageContent pageContent = new PageContent();
             FixedPage fixedPage = new FixedPage();
             fixedPage.Width = fixedDoc.DocumentPaginator.PageSize.Width;
             fixedPage.Height = fixedDoc.DocumentPaginator.PageSize.Height;
 
-            // Create an Image control
             Image img = new Image();
             img.Source = image;
             img.Width = fixedPage.Width;
             img.Height = fixedPage.Height;
-            img.Stretch = Stretch.Uniform; // Maintain aspect ratio
+            img.Stretch = Stretch.Uniform;
 
-            // Add the image to the FixedPage
+    
             fixedPage.Children.Add(img);
             ((IAddChild)pageContent).AddChild(fixedPage);
 
-            // Add the page content to the document
+           
             fixedDoc.Pages.Add(pageContent);
 
             return fixedDoc;
@@ -407,6 +428,35 @@ namespace BadgeGenerator
             {
 
                 logoPath = dlg.FileName;
+            }
+        }
+
+        private void CheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+            string filePath = "settings.txt";
+            try
+            {
+                File.WriteAllText(filePath, logoPath); 
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Failed to save settings: " + ex.Message);
+            }
+        }
+
+        private void CheckBox_Unchecked(object sender, RoutedEventArgs e)
+        {
+            string filePath = "settings.txt";
+            try
+            {
+                if (File.Exists(filePath))
+                {
+                    File.Delete(filePath); 
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Failed to clear settings: " + ex.Message);
             }
         }
     }

@@ -17,12 +17,13 @@
         </Border>
         <TextBlock HorizontalAlignment="Left" Margin="42,59,0,0" TextWrapping="Wrap" Text="Employee Name:" VerticalAlignment="Top" FontWeight="Bold"/>
         <TextBox x:Name="empName" HorizontalAlignment="Left" Margin="42,78,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" TextChanged="empName_TextChanged"/>
-        <Button x:Name="btnClear" Content="New" HorizontalAlignment="Left" Margin="37,310,0,0" VerticalAlignment="Top" Width="49" Click="btnClear_Click"/>
-        <Button x:Name="btnPrint" Content="Print" HorizontalAlignment="Left" Margin="37,344,0,0" VerticalAlignment="Top" Width="49" RenderTransformOrigin="0.163,0.804" Click="btnPrint_Click"/>
+        <Button x:Name="btnClear" Content="New" HorizontalAlignment="Left" Margin="37,453,0,0" VerticalAlignment="Top" Width="49" Click="btnClear_Click"/>
+        <Button x:Name="btnPrint" Content="Print" HorizontalAlignment="Left" Margin="37,489,0,0" VerticalAlignment="Top" Width="49" RenderTransformOrigin="0.163,0.804" Click="btnPrint_Click"/>
         <TextBlock HorizontalAlignment="Left" Margin="42,101,0,0" TextWrapping="Wrap" Text="Employee Barcode:" VerticalAlignment="Top" FontWeight="Bold"/>
         <TextBox x:Name="barcodeField" HorizontalAlignment="Left" Margin="42,122,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
-        <Button x:Name="btnChange" Content="Change" HorizontalAlignment="Left" Margin="42,456,0,0" VerticalAlignment="Top" Width="60" Click="btnChange_Click"/>
-        <TextBlock HorizontalAlignment="Left" Margin="42,435,0,0" TextWrapping="Wrap" Text="Change Logo Path:" VerticalAlignment="Top" FontWeight="Bold"/>
+        <Button x:Name="btnChange" Content="Change" HorizontalAlignment="Left" Margin="42,235,0,0" VerticalAlignment="Top" Width="60" Click="btnChange_Click"/>
+        <TextBlock HorizontalAlignment="Left" Margin="42,214,0,0" TextWrapping="Wrap" Text="Change Logo Path:" VerticalAlignment="Top" FontWeight="Bold"/>
+        <CheckBox x:Name="chkDefaultPath" Content="Make Path Default ?" HorizontalAlignment="Left" Margin="122,237,0,0" VerticalAlignment="Top" Checked="CheckBox_Checked"/>
 
 
 
