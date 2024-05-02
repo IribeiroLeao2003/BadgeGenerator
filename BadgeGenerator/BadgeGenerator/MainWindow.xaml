@@ -12,8 +12,8 @@
         <TextBlock HorizontalAlignment="Left" Margin="42,12,0,0" TextWrapping="Wrap" Text="Employee Number:" VerticalAlignment="Top" FontWeight="Bold"/>
         <TextBlock HorizontalAlignment="Left" Margin="42,151,0,0" TextWrapping="Wrap" Text="Employee Photo:" VerticalAlignment="Top" FontWeight="Bold"/>
         <Button x:Name="getPhotoFileLocation" Content="Upload Image" HorizontalAlignment="Left" Margin="42,172,0,0" VerticalAlignment="Top" Click="getPhotoFileLocation_Click" RenderTransformOrigin="0.303,0.553"/>
-        <Border BorderBrush="Black" BorderThickness="2" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="306,99,0,0">
-            <Image x:Name="photoImage" Width="204" Height="324"/>
+        <Border BorderBrush="Black" BorderThickness="2" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="306,99,0,0" Background="White">
+            <Image x:Name="photoImage"  Width="204" Height="324" />
         </Border>
         <TextBlock HorizontalAlignment="Left" Margin="42,59,0,0" TextWrapping="Wrap" Text="Employee Name:" VerticalAlignment="Top" FontWeight="Bold"/>
         <TextBox x:Name="empName" HorizontalAlignment="Left" Margin="42,78,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" TextChanged="empName_TextChanged"/>

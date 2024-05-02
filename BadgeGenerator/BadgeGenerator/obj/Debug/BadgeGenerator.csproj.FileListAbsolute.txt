@@ -20,3 +20,5 @@ C:\Users\isaac\Source\Repos\BadgeGenerator\BadgeGenerator\BadgeGenerator\obj\Deb
 C:\Users\isaac\Source\Repos\BadgeGenerator\BadgeGenerator\BadgeGenerator\obj\Debug\BadgeGen.826BEADA.Up2Date
 C:\Users\isaac\Source\Repos\BadgeGenerator\BadgeGenerator\BadgeGenerator\obj\Debug\BadgeGenerator.exe
 C:\Users\isaac\Source\Repos\BadgeGenerator\BadgeGenerator\BadgeGenerator\obj\Debug\BadgeGenerator.pdb
+C:\Users\isaac\Source\Repos\BadgeGenerator\BadgeGenerator\BadgeGenerator\obj\Debug\pPriview.g.cs
+C:\Users\isaac\Source\Repos\BadgeGenerator\BadgeGenerator\BadgeGenerator\obj\Debug\pPriview.baml
