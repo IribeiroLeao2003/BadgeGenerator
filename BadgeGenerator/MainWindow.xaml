@@ -1,0 +1,30 @@
+﻿<Window x:Class="BadgeGenerator.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BadgeGenerator"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="550" Width="600">
+    <Grid Margin="0,0,0,-6">
+        <TextBox x:Name="empNumber" HorizontalAlignment="Left" Margin="42,33,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" TextChanged="TextBox_TextChanged"/>
+        <Button x:Name="generateBadge" Content="Generate Badge" HorizontalAlignment="Left" Margin="365,55,0,0" VerticalAlignment="Top" Width="96" Click="generateBadge_Click"/>
+        <TextBlock HorizontalAlignment="Left" Margin="42,12,0,0" TextWrapping="Wrap" Text="Employee Number:" VerticalAlignment="Top" FontWeight="Bold"/>
+        <TextBlock HorizontalAlignment="Left" Margin="42,151,0,0" TextWrapping="Wrap" Text="Employee Photo:" VerticalAlignment="Top" FontWeight="Bold"/>
+        <Button x:Name="getPhotoFileLocation" Content="Upload Image" HorizontalAlignment="Left" Margin="42,172,0,0" VerticalAlignment="Top" Click="getPhotoFileLocation_Click" RenderTransformOrigin="0.303,0.553"/>
+        <Border BorderBrush="Black" BorderThickness="2" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="306,99,0,0">
+            <Image x:Name="photoImage" Width="204" Height="324"/>
+        </Border>
+        <TextBlock HorizontalAlignment="Left" Margin="42,59,0,0" TextWrapping="Wrap" Text="Employee Name:" VerticalAlignment="Top" FontWeight="Bold"/>
+        <TextBox x:Name="empName" HorizontalAlignment="Left" Margin="42,78,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" TextChanged="empName_TextChanged"/>
+        <Button x:Name="btnClear" Content="New" HorizontalAlignment="Left" Margin="37,310,0,0" VerticalAlignment="Top" Width="49" Click="btnClear_Click"/>
+        <Button x:Name="btnPrint" Content="Print" HorizontalAlignment="Left" Margin="37,344,0,0" VerticalAlignment="Top" Width="49" RenderTransformOrigin="0.163,0.804" Click="btnPrint_Click"/>
+        <TextBlock HorizontalAlignment="Left" Margin="42,101,0,0" TextWrapping="Wrap" Text="Employee Barcode:" VerticalAlignment="Top" FontWeight="Bold"/>
+        <TextBox x:Name="barcodeField" HorizontalAlignment="Left" Margin="42,122,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <Button x:Name="btnChange" Content="Change" HorizontalAlignment="Left" Margin="42,456,0,0" VerticalAlignment="Top" Width="60" Click="btnChange_Click"/>
+        <TextBlock HorizontalAlignment="Left" Margin="42,435,0,0" TextWrapping="Wrap" Text="Change Logo Path:" VerticalAlignment="Top" FontWeight="Bold"/>
+
+
+
+    </Grid>
+</Window>
