@@ -5,27 +5,68 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BadgeGenerator"
         mc:Ignorable="d"
-        Title="MainWindow" Height="550" Width="600">
-    <Grid Margin="0,0,0,-6">
-        <TextBox x:Name="empNumber" HorizontalAlignment="Left" Margin="42,33,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" TextChanged="TextBox_TextChanged"/>
-        <Button x:Name="generateBadge" Content="Generate Badge" HorizontalAlignment="Left" Margin="365,55,0,0" VerticalAlignment="Top" Width="96" Click="generateBadge_Click"/>
-        <TextBlock HorizontalAlignment="Left" Margin="42,12,0,0" TextWrapping="Wrap" Text="Employee Number:" VerticalAlignment="Top" FontWeight="Bold"/>
-        <TextBlock HorizontalAlignment="Left" Margin="42,151,0,0" TextWrapping="Wrap" Text="Employee Photo:" VerticalAlignment="Top" FontWeight="Bold"/>
-        <Button x:Name="getPhotoFileLocation" Content="Upload Image" HorizontalAlignment="Left" Margin="42,172,0,0" VerticalAlignment="Top" Click="getPhotoFileLocation_Click" RenderTransformOrigin="0.303,0.553"/>
+        Title="Badge Generator" Height="500" Width="600">
+
+    <Window.Resources>
+        <Style x:Key="ButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="Orange"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="BorderBrush" Value="#FF1C86EE"/>
+            <Setter Property="BorderThickness" Value="2"/>
+            <Setter Property="Padding" Value="10,5"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="5">
+                            <ContentPresenter HorizontalAlignment="Center" 
+                                              VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#FF4682B4"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Background" Value="#FF4169E1"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    <Grid Margin="-1,-3,1,-3">
+        <TextBox x:Name="empNumber" HorizontalAlignment="Left" Margin="22,67,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" TextChanged="TextBox_TextChanged"/>
+        <Button x:Name="generateBadge" Content="Generate Badge" HorizontalAlignment="Left" Margin="338,56,0,0" VerticalAlignment="Top" Width="150" Click="generateBadge_Click" Style="{StaticResource ButtonStyle}"/>
+        <TextBlock HorizontalAlignment="Left" Margin="22,46,0,0" TextWrapping="Wrap" Text="Employee Number:" VerticalAlignment="Top" FontWeight="Bold"/>
+        <TextBlock HorizontalAlignment="Left" Margin="22,185,0,0" TextWrapping="Wrap" Text="Employee Photo:" VerticalAlignment="Top" FontWeight="Bold"/>
+        <Button x:Name="getPhotoFileLocation" Content="Upload Image" HorizontalAlignment="Left" Margin="22,206,0,0" VerticalAlignment="Top" Click="getPhotoFileLocation_Click" Style="{StaticResource ButtonStyle}"/>
         <Border BorderBrush="Black" BorderThickness="2" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="306,99,0,0" Background="White">
             <Image x:Name="photoImage"  Width="204" Height="324" />
         </Border>
-        <TextBlock HorizontalAlignment="Left" Margin="42,59,0,0" TextWrapping="Wrap" Text="Employee Name:" VerticalAlignment="Top" FontWeight="Bold"/>
-        <TextBox x:Name="empName" HorizontalAlignment="Left" Margin="42,78,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" TextChanged="empName_TextChanged"/>
-        <Button x:Name="btnClear" Content="New" HorizontalAlignment="Left" Margin="37,453,0,0" VerticalAlignment="Top" Width="49" Click="btnClear_Click"/>
-        <Button x:Name="btnPrint" Content="Print" HorizontalAlignment="Left" Margin="37,489,0,0" VerticalAlignment="Top" Width="49" RenderTransformOrigin="0.163,0.804" Click="btnPrint_Click"/>
-        <TextBlock HorizontalAlignment="Left" Margin="42,101,0,0" TextWrapping="Wrap" Text="Employee Barcode:" VerticalAlignment="Top" FontWeight="Bold"/>
-        <TextBox x:Name="barcodeField" HorizontalAlignment="Left" Margin="42,122,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
-        <Button x:Name="btnChange" Content="Change" HorizontalAlignment="Left" Margin="42,235,0,0" VerticalAlignment="Top" Width="60" Click="btnChange_Click"/>
-        <TextBlock HorizontalAlignment="Left" Margin="42,214,0,0" TextWrapping="Wrap" Text="Change Logo Path:" VerticalAlignment="Top" FontWeight="Bold"/>
-        <CheckBox x:Name="chkDefaultPath" Content="Make Path Default ?" HorizontalAlignment="Left" Margin="122,237,0,0" VerticalAlignment="Top" Checked="CheckBox_Checked"/>
+        <TextBlock HorizontalAlignment="Left" Margin="22,93,0,0" TextWrapping="Wrap" Text="Employee Name:" VerticalAlignment="Top" FontWeight="Bold"/>
+        <TextBox x:Name="empName" HorizontalAlignment="Left" Margin="22,112,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" TextChanged="empName_TextChanged"/>
+        <Button x:Name="btnClear" Content="New" HorizontalAlignment="Left" Margin="22,353,0,0" VerticalAlignment="Top" Width="50" Click="btnClear_Click" Style="{StaticResource ButtonStyle}"/>
+        <Button x:Name="btnPrint" Content="Print" HorizontalAlignment="Left" Margin="22,389,0,0" VerticalAlignment="Top" Width="50" Click="btnPrint_Click" Style="{StaticResource ButtonStyle}"/>
+        <TextBlock HorizontalAlignment="Left" Margin="22,135,0,0" TextWrapping="Wrap" Text="Employee Barcode:" VerticalAlignment="Top" FontWeight="Bold"/>
+        <TextBox x:Name="barcodeField" HorizontalAlignment="Left" Margin="22,156,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" TextChanged="barcodeField_TextChanged"/>
+        <Button x:Name="btnChange" Content="Change" HorizontalAlignment="Left" Margin="22,269,0,0" VerticalAlignment="Top" Width="60" Click="btnChange_Click" Style="{StaticResource ButtonStyle}"/>
+        <TextBlock HorizontalAlignment="Left" Margin="22,248,0,0" TextWrapping="Wrap" Text="Change Logo Path:" VerticalAlignment="Top" FontWeight="Bold"/>
+        <CheckBox x:Name="chkDefaultPath" Content="Make Path Default ?" HorizontalAlignment="Left" Margin="106,273,0,0" VerticalAlignment="Top" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked"/>
+
+
+
+
 
 
 
     </Grid>
+
 </Window>
+    

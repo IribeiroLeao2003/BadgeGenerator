@@ -62,6 +62,7 @@ namespace BadgeGenerator
                 {
                     logoPath = File.ReadAllText(filePath);
                     chkDefaultPath.IsChecked = true;
+                  
                 }
                 else
                 {
@@ -91,7 +92,7 @@ namespace BadgeGenerator
 
                     using (Bitmap resizedImage = new Bitmap(originalImage, requiredWidth, requiredHeight))
                     {
-                        photoImage.Source = ResizeImage(resizedImage, 120, 130);
+                        photoImage.Source = ResizeImage(resizedImage);
                         userPicture = (BitmapImage)photoImage.Source; 
                     }
                 }
@@ -120,6 +121,7 @@ namespace BadgeGenerator
 
         private void empName_TextChanged(object sender, TextChangedEventArgs e)
         {
+            string employeeName = empName.Text;
 
         }
 
@@ -306,38 +308,19 @@ namespace BadgeGenerator
         }
 
 
-        private static BitmapImage ResizeImage(Bitmap bitmap, int targetWidth, int targetHeight)
+        private static BitmapImage ResizeImage(Bitmap bitmap)
         {
-            int originalWidth = bitmap.Width;
-            int originalHeight = bitmap.Height;
-
-            float ratioX = (float)targetWidth / originalWidth;
-            float ratioY = (float)targetHeight / originalHeight;
-            float ratio = Math.Min(ratioX, ratioY);
-
-            int newWidth = (int)(originalWidth * ratio);
-            int newHeight = (int)(originalHeight * ratio);
-
-            Bitmap resizedBitmap = new Bitmap(newWidth, newHeight);
-            using (Graphics graphics = Graphics.FromImage(resizedBitmap))
-            {
-                graphics.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
-                graphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-                graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-                graphics.DrawImage(bitmap, 0, 0, newWidth, newHeight);
-            }
-
-            BitmapImage bitmapImage = new BitmapImage();
             using (MemoryStream memory = new MemoryStream())
             {
-                resizedBitmap.Save(memory, System.Drawing.Imaging.ImageFormat.Png);
+                bitmap.Save(memory, System.Drawing.Imaging.ImageFormat.Png);
                 memory.Position = 0;
+                BitmapImage bitmapImage = new BitmapImage();
                 bitmapImage.BeginInit();
                 bitmapImage.StreamSource = memory;
                 bitmapImage.CacheOption = BitmapCacheOption.OnLoad;
                 bitmapImage.EndInit();
+                return bitmapImage;
             }
-            return bitmapImage;
         }
 
         private FixedDocument CreateFixedDocument(BitmapImage image)
@@ -458,6 +441,11 @@ namespace BadgeGenerator
             {
                 MessageBox.Show("Failed to clear settings: " + ex.Message);
             }
+        }
+
+        private void barcodeField_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
         }
     }
 }

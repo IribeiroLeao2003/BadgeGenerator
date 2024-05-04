@@ -112,5 +112,8 @@
       <Version>0.16.9</Version>
     </PackageReference>
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="MPLogo.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
