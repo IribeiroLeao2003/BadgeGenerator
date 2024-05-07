@@ -26,6 +26,11 @@ using Pen = System.Windows.Media.Pen;
 using static System.Net.Mime.MediaTypeNames;
 using System.Diagnostics;
 using PdfSharp.Drawing;
+using System.Windows.Markup;
+using Size = System.Windows.Size;
+using Image = System.Windows.Controls.Image;
+using System.Windows.Threading;
+using System.Printing;
 
 
 
@@ -40,10 +45,44 @@ namespace BadgeGenerator
         private double heightMax = 3.38;
         private string logoPath;
 
+        private BitmapImage userPicture; 
+
 
         public MainWindow()
         {
             InitializeComponent();
+            LoadSettings();
+        }
+
+        private void LoadSettings()
+        {
+            string filePath = "settings.txt";
+            try
+            {
+                if (File.Exists(filePath))
+                {
+                    logoPath = File.ReadAllText(filePath);
+                  
+
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Failed to load settings: " + ex.Message);
+            }
+        }
+        private void DragWindow(object sender, MouseButtonEventArgs e)
+        {
+            if (e.LeftButton == MouseButtonState.Pressed)
+            {
+                this.DragMove();
+            }
+        }
+
+        private void CloseWindow_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close(); 
         }
 
         private void getPhotoFileLocation_Click(object sender, RoutedEventArgs e)
@@ -63,9 +102,8 @@ namespace BadgeGenerator
 
                     using (Bitmap resizedImage = new Bitmap(originalImage, requiredWidth, requiredHeight))
                     {
-                        photoImage.Source = ResizeImage(resizedImage, 120, 130);
-                     
-
+                        photoImage.Source = ResizeImage(resizedImage);
+                        userPicture = (BitmapImage)photoImage.Source; 
                     }
                 }
             }
@@ -86,36 +124,37 @@ namespace BadgeGenerator
                 return bitmapImage;
             }
         }
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
 
-        }
-
-        private void empName_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
-
-
+    
       
 
         private void generateBadge_Click(object sender, RoutedEventArgs e)
         {
+            
             string employeeName = empName.Text;
             string barcodeNumber = barcodeField.Text;
             string employeeNumber = empNumber.Text;
-            ImageSource empImage = photoImage.Source;
+            ImageSource empImage = userPicture; 
             ImageSource cmpLogo = GetCompanyLogo();
+
+
+          
 
             if (empImage == null || string.IsNullOrWhiteSpace(employeeNumber) || string.IsNullOrWhiteSpace(employeeName) || string.IsNullOrWhiteSpace(logoPath)) {
                 MessageBox.Show("Please fill all the information");
             }
             else
             {
-                photoImage.Source = null;
+
+                if (photoImage.Source != null)
+                {
+                    ClearImageSource();
+                }
+
                 Employee generateBadge = new Employee(employeeName, employeeNumber, barcodeNumber, empImage);
                 try
                 {
+                   
                     BitmapImage bitmapImage = GeneratePDF417Barcode(generateBadge);
                     RenderTargetBitmap badgeImage = CreateBadge(generateBadge, bitmapImage, cmpLogo);
                     photoImage.Source = badgeImage;
@@ -130,6 +169,15 @@ namespace BadgeGenerator
         }
 
 
+        private void ClearImageSource()
+        {
+            Dispatcher.Invoke(() =>
+            {
+                photoImage.Source = null;
+                photoImage.InvalidateVisual();
+                photoImage.UpdateLayout();
+            }, DispatcherPriority.Render); 
+        }
 
         private ImageSource GetCompanyLogo()
         {
@@ -178,18 +226,20 @@ namespace BadgeGenerator
             return ResizeBarcode(result);
         }
 
+   
+
 
         private RenderTargetBitmap CreateBadge(Employee employee, BitmapImage barcodeImage, ImageSource companyLogo)
         {
             int width = 204;
-            int height = 324;
+            int height = 357;
 
 
             int yPosLogo = 40;
-            int yPosEmpImg = 98;
-            int yPosEmpName = 235;
+            int yPosEmpImg = 105;
+            int yPosEmpName = 260;
             int yPosBarcode = height - 70;  
-            int yPosEmpNum = height - 15;
+            int yPosEmpNum = height - 17;
 
             DrawingVisual drawingVisual = new DrawingVisual();
             using (DrawingContext context = drawingVisual.RenderOpen())
@@ -203,7 +253,7 @@ namespace BadgeGenerator
 
                
                 if (employee.EmpImage != null)
-                    context.DrawImage(employee.EmpImage, new Rect((width - 120) / 2, yPosEmpImg, 120, 130));
+                    context.DrawImage(employee.EmpImage, new Rect((width - 120) / 2, yPosEmpImg, 130, 140));
 
                 
                 FormattedText nameText = new FormattedText(
@@ -227,7 +277,7 @@ namespace BadgeGenerator
                     CultureInfo.CurrentCulture,
                     FlowDirection.LeftToRight,
                     new Typeface("Verdana"),  
-                    10, 
+                    13, 
                     Brushes.Black,
                     new NumberSubstitution(),
                     1);
@@ -237,7 +287,7 @@ namespace BadgeGenerator
                     CultureInfo.CurrentCulture,
                     FlowDirection.LeftToRight,
                     new Typeface("Verdana"),
-                    10,
+                    13,
                     Brushes.Black,
                     new NumberSubstitution(),
                     1);
@@ -260,18 +310,8 @@ namespace BadgeGenerator
         }
 
 
-        private static BitmapImage ResizeImage(Bitmap bitmap, int targetWidth, int targetHeight)
+        private static BitmapImage ResizeImage(Bitmap bitmap)
         {
-            int originalWidth = bitmap.Width;
-            int originalHeight = bitmap.Height;
-
-            float ratioX = (float)targetWidth / originalWidth;
-            float ratioY = (float)targetHeight / originalHeight;
-            float ratio = Math.Min(ratioX, ratioY);
-
-            int newWidth = (int)(originalWidth * ratio);
-            int newHeight = (int)(originalHeight * ratio);
-
             using (MemoryStream memory = new MemoryStream())
             {
                 bitmap.Save(memory, System.Drawing.Imaging.ImageFormat.Png);
@@ -279,12 +319,60 @@ namespace BadgeGenerator
                 BitmapImage bitmapImage = new BitmapImage();
                 bitmapImage.BeginInit();
                 bitmapImage.StreamSource = memory;
-                bitmapImage.DecodePixelWidth = newWidth;
                 bitmapImage.CacheOption = BitmapCacheOption.OnLoad;
                 bitmapImage.EndInit();
                 return bitmapImage;
             }
         }
+
+        private FixedDocument CreateFixedDocument(BitmapImage image)
+        {
+
+            FixedDocument fixedDoc = new FixedDocument();
+            fixedDoc.DocumentPaginator.PageSize = new Size(96 * 8.5, 96 * 11); 
+
+         
+            PageContent pageContent = new PageContent();
+            FixedPage fixedPage = new FixedPage();
+            fixedPage.Width = fixedDoc.DocumentPaginator.PageSize.Width;
+            fixedPage.Height = fixedDoc.DocumentPaginator.PageSize.Height;
+
+            Image img = new Image();
+            img.Source = image;
+            img.Width = fixedPage.Width;
+            img.Height = fixedPage.Height;
+            img.Stretch = Stretch.Uniform;
+
+    
+            fixedPage.Children.Add(img);
+            ((IAddChild)pageContent).AddChild(fixedPage);
+
+           
+            fixedDoc.Pages.Add(pageContent);
+
+            return fixedDoc;
+        }
+
+
+        private void ShowPrintPreview(BitmapImage image)
+        {
+            
+            FixedDocument fixedDocument = CreateFixedDocument(image);
+
+            
+            DocumentViewer viewer = new DocumentViewer();
+            viewer.Document = fixedDocument;
+
+           
+            Window previewWindow = new Window();
+            previewWindow.Content = viewer;
+            previewWindow.Title = "Print Preview";
+            previewWindow.Width = 600;
+            previewWindow.Height = 800;
+            previewWindow.Show();
+        }
+
+
 
 
         private void btnClear_Click(object sender, RoutedEventArgs e)
@@ -296,40 +384,75 @@ namespace BadgeGenerator
 
 
         }
-
         private void btnPrint_Click(object sender, RoutedEventArgs e)
         {
-            
             PrintDialog printDialog = new PrintDialog();
+
+           
+            if (printDialog.PrintTicket != null)
+            {
+                printDialog.PrintTicket.PageMediaSize = new PageMediaSize(PageMediaSizeName.ISOA8);  
+                printDialog.PrintTicket.PageOrientation = PageOrientation.Portrait;
+            }
+
+            Size sz = new Size(printDialog.PrintableAreaWidth, printDialog.PrintableAreaHeight);  
+            photoImage.Measure(sz);
+            photoImage.Arrange(new Rect(new Point(0, 0), sz));
+            photoImage.UpdateLayout();
+
             if (printDialog.ShowDialog() == true)
             {
                 printDialog.PrintVisual(photoImage, "Printing Image");
             }
-
-            var renderTargetBitmap = new RenderTargetBitmap((int)photoImage.ActualWidth, (int)photoImage.ActualHeight, 96, 96, PixelFormats.Pbgra32);
-            renderTargetBitmap.Render(photoImage);
-
-            var encoder = new PngBitmapEncoder(); 
-            encoder.Frames.Add(BitmapFrame.Create(renderTargetBitmap));
-
         }
 
-        private void btnChange_Click(object sender, RoutedEventArgs e)
+     
+
+        private void CheckBox_Checked(object sender, RoutedEventArgs e)
         {
-
-            OpenFileDialog dlg = new OpenFileDialog
+            string filePath = "settings.txt";
+            try
             {
-                Filter = "Image files (*.png)|*.png|All files (*.*)|*.*"
-            };
-
-            bool? result = dlg.ShowDialog();
-
-           
-            if (result == true)
+                File.WriteAllText(filePath, logoPath); 
+            }
+            catch (Exception ex)
             {
-
-                logoPath = dlg.FileName;
+                MessageBox.Show("Failed to save settings: " + ex.Message);
             }
         }
+
+        private void CheckBox_Unchecked(object sender, RoutedEventArgs e)
+        {
+            string filePath = "settings.txt";
+            try
+            {
+                if (File.Exists(filePath))
+                {
+                    File.Delete(filePath); 
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Failed to clear settings: " + ex.Message);
+            }
+        }
+
+        private void barcodeField_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void empNumber_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void empName_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            string employeeName = empName.Text;
+
+        }
+
+
     }
 }

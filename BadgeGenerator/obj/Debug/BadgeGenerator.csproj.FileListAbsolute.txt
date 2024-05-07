@@ -9,10 +9,12 @@ C:\Users\isaac\Source\Repos\BadgeGenerator\BadgeGenerator\BadgeGenerator\bin\Deb
 C:\Users\isaac\Source\Repos\BadgeGenerator\BadgeGenerator\BadgeGenerator\bin\Debug\zxing.presentation.dll
 C:\Users\isaac\Source\Repos\BadgeGenerator\BadgeGenerator\BadgeGenerator\obj\Debug\BadgeGenerator.csproj.AssemblyReference.cache
 C:\Users\isaac\Source\Repos\BadgeGenerator\BadgeGenerator\BadgeGenerator\obj\Debug\MainWindow.g.cs
+C:\Users\isaac\Source\Repos\BadgeGenerator\BadgeGenerator\BadgeGenerator\obj\Debug\pPriview.g.cs
 C:\Users\isaac\Source\Repos\BadgeGenerator\BadgeGenerator\BadgeGenerator\obj\Debug\App.g.cs
 C:\Users\isaac\Source\Repos\BadgeGenerator\BadgeGenerator\BadgeGenerator\obj\Debug\BadgeGenerator_MarkupCompile.cache
 C:\Users\isaac\Source\Repos\BadgeGenerator\BadgeGenerator\BadgeGenerator\obj\Debug\BadgeGenerator_MarkupCompile.lref
 C:\Users\isaac\Source\Repos\BadgeGenerator\BadgeGenerator\BadgeGenerator\obj\Debug\MainWindow.baml
+C:\Users\isaac\Source\Repos\BadgeGenerator\BadgeGenerator\BadgeGenerator\obj\Debug\pPriview.baml
 C:\Users\isaac\Source\Repos\BadgeGenerator\BadgeGenerator\BadgeGenerator\obj\Debug\BadgeGenerator.g.resources
 C:\Users\isaac\Source\Repos\BadgeGenerator\BadgeGenerator\BadgeGenerator\obj\Debug\BadgeGenerator.Properties.Resources.resources
 C:\Users\isaac\Source\Repos\BadgeGenerator\BadgeGenerator\BadgeGenerator\obj\Debug\BadgeGenerator.csproj.GenerateResource.cache
