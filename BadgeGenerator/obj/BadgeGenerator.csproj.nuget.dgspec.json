@@ -43,6 +43,14 @@
       "frameworks": {
         "net481": {
           "dependencies": {
+            "Aspose.Imaging": {
+              "target": "Package",
+              "version": "[24.5.0, )"
+            },
+            "ImageResizer": {
+              "target": "Package",
+              "version": "[4.2.8, )"
+            },
             "PDFsharp": {
               "target": "Package",
               "version": "[1.50.5147, )"

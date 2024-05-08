@@ -2,6 +2,32 @@
   "version": 3,
   "targets": {
     ".NETFramework,Version=v4.8.1": {
+      "Aspose.Imaging/24.5.0": {
+        "type": "package",
+        "compile": {
+          "lib/net40/Aspose.Imaging.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net40/Aspose.Imaging.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "ImageResizer/4.2.8": {
+        "type": "package",
+        "compile": {
+          "lib/net45/ImageResizer.dll": {
+            "related": ".XML"
+          }
+        },
+        "runtime": {
+          "lib/net45/ImageResizer.dll": {
+            "related": ".XML"
+          }
+        }
+      },
       "PDFsharp/1.50.5147": {
         "type": "package",
         "frameworkAssemblies": [
@@ -53,6 +79,32 @@
       }
     },
     ".NETFramework,Version=v4.8.1/win": {
+      "Aspose.Imaging/24.5.0": {
+        "type": "package",
+        "compile": {
+          "lib/net40/Aspose.Imaging.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net40/Aspose.Imaging.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "ImageResizer/4.2.8": {
+        "type": "package",
+        "compile": {
+          "lib/net45/ImageResizer.dll": {
+            "related": ".XML"
+          }
+        },
+        "runtime": {
+          "lib/net45/ImageResizer.dll": {
+            "related": ".XML"
+          }
+        }
+      },
       "PDFsharp/1.50.5147": {
         "type": "package",
         "frameworkAssemblies": [
@@ -104,6 +156,32 @@
       }
     },
     ".NETFramework,Version=v4.8.1/win-arm64": {
+      "Aspose.Imaging/24.5.0": {
+        "type": "package",
+        "compile": {
+          "lib/net40/Aspose.Imaging.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net40/Aspose.Imaging.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "ImageResizer/4.2.8": {
+        "type": "package",
+        "compile": {
+          "lib/net45/ImageResizer.dll": {
+            "related": ".XML"
+          }
+        },
+        "runtime": {
+          "lib/net45/ImageResizer.dll": {
+            "related": ".XML"
+          }
+        }
+      },
       "PDFsharp/1.50.5147": {
         "type": "package",
         "frameworkAssemblies": [
@@ -155,6 +233,32 @@
       }
     },
     ".NETFramework,Version=v4.8.1/win-x64": {
+      "Aspose.Imaging/24.5.0": {
+        "type": "package",
+        "compile": {
+          "lib/net40/Aspose.Imaging.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net40/Aspose.Imaging.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "ImageResizer/4.2.8": {
+        "type": "package",
+        "compile": {
+          "lib/net45/ImageResizer.dll": {
+            "related": ".XML"
+          }
+        },
+        "runtime": {
+          "lib/net45/ImageResizer.dll": {
+            "related": ".XML"
+          }
+        }
+      },
       "PDFsharp/1.50.5147": {
         "type": "package",
         "frameworkAssemblies": [
@@ -206,6 +310,32 @@
       }
     },
     ".NETFramework,Version=v4.8.1/win-x86": {
+      "Aspose.Imaging/24.5.0": {
+        "type": "package",
+        "compile": {
+          "lib/net40/Aspose.Imaging.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net40/Aspose.Imaging.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "ImageResizer/4.2.8": {
+        "type": "package",
+        "compile": {
+          "lib/net45/ImageResizer.dll": {
+            "related": ".XML"
+          }
+        },
+        "runtime": {
+          "lib/net45/ImageResizer.dll": {
+            "related": ".XML"
+          }
+        }
+      },
       "PDFsharp/1.50.5147": {
         "type": "package",
         "frameworkAssemblies": [
@@ -258,6 +388,49 @@
     }
   },
   "libraries": {
+    "Aspose.Imaging/24.5.0": {
+      "sha512": "Qm49pmLIiPDbhwr4IdJIZov9lITloGQhOMY6UHOiIoKxiXpnHpevVncAdEXWDRJFHFJ1CWTggRs28/+wTJTN/g==",
+      "type": "package",
+      "path": "aspose.imaging/24.5.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Help/Aspose.Imaging.chm",
+        "LICENSE.txt",
+        "License/Aspose_End-User-License-Agreement_2021-01-19.pdf",
+        "License/ThirdPartyLicenses.Aspose.Imaging.Net.pdf",
+        "aspose.imaging.24.5.0.nupkg.sha512",
+        "aspose.imaging.nuspec",
+        "icon.png",
+        "lib/net40-client/Aspose.Imaging.dll",
+        "lib/net40-client/Aspose.Imaging.xml",
+        "lib/net40/Aspose.Imaging.dll",
+        "lib/net40/Aspose.Imaging.xml",
+        "lib/net6.0/Aspose.Imaging.dll",
+        "lib/net6.0/Aspose.Imaging.xml",
+        "lib/net7.0/Aspose.Imaging.dll",
+        "lib/net7.0/Aspose.Imaging.xml",
+        "lib/net8.0/Aspose.Imaging.dll",
+        "lib/net8.0/Aspose.Imaging.xml",
+        "lib/netcoreapp3.1/Aspose.Imaging.dll",
+        "lib/netcoreapp3.1/Aspose.Imaging.xml",
+        "lib/netstandard2.0/Aspose.Imaging.dll",
+        "lib/netstandard2.0/Aspose.Imaging.xml"
+      ]
+    },
+    "ImageResizer/4.2.8": {
+      "sha512": "3OZKxlsyYr9Zxsz0KwXJ5S749azmjcPV4B344ssR/3oneEY6ZdTawDPochD4Z4RHBs4bYBf592lVhmEngxtZ7g==",
+      "type": "package",
+      "path": "imageresizer/4.2.8",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "imageresizer.4.2.8.nupkg.sha512",
+        "imageresizer.nuspec",
+        "lib/net45/ImageResizer.XML",
+        "lib/net45/ImageResizer.dll"
+      ]
+    },
     "PDFsharp/1.50.5147": {
       "sha512": "vr5KBIqcXu2hqZ43UTwPR+jqHgMrT5tsPtJvEF+mORKoBNMh3bRWgAwic0U1sT2IVb4PR5m0GyQxnmCz8jBHWg==",
       "type": "package",
@@ -361,6 +534,8 @@
   },
   "projectFileDependencyGroups": {
     ".NETFramework,Version=v4.8.1": [
+      "Aspose.Imaging >= 24.5.0",
+      "ImageResizer >= 4.2.8",
       "PDFsharp >= 1.50.5147",
       "ZXing.Net >= 0.16.9"
     ]
@@ -408,6 +583,14 @@
     "frameworks": {
       "net481": {
         "dependencies": {
+          "Aspose.Imaging": {
+            "target": "Package",
+            "version": "[24.5.0, )"
+          },
+          "ImageResizer": {
+            "target": "Package",
+            "version": "[4.2.8, )"
+          },
           "PDFsharp": {
             "target": "Package",
             "version": "[1.50.5147, )"

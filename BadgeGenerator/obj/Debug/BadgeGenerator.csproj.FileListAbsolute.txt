@@ -22,3 +22,5 @@ C:\Users\isaac\Source\Repos\BadgeGenerator\BadgeGenerator\BadgeGenerator\obj\Deb
 C:\Users\isaac\Source\Repos\BadgeGenerator\BadgeGenerator\BadgeGenerator\obj\Debug\BadgeGen.826BEADA.Up2Date
 C:\Users\isaac\Source\Repos\BadgeGenerator\BadgeGenerator\BadgeGenerator\obj\Debug\BadgeGenerator.exe
 C:\Users\isaac\Source\Repos\BadgeGenerator\BadgeGenerator\BadgeGenerator\obj\Debug\BadgeGenerator.pdb
+C:\Users\isaac\Source\Repos\BadgeGenerator\BadgeGenerator\BadgeGenerator\bin\Debug\Aspose.Imaging.dll
+C:\Users\isaac\Source\Repos\BadgeGenerator\BadgeGenerator\BadgeGenerator\bin\Debug\ImageResizer.dll

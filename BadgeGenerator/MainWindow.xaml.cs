@@ -261,7 +261,7 @@ namespace BadgeGenerator
                     CultureInfo.CurrentCulture,
                     FlowDirection.LeftToRight,
                     new Typeface("Verdana"), 
-                    15, 
+                    18, 
                     Brushes.Black,
                     new NumberSubstitution(),
                     1);
@@ -269,7 +269,7 @@ namespace BadgeGenerator
 
                 
                 if (barcodeImage != null)
-                    context.DrawImage(barcodeImage, new Rect((width - 190) / 2, yPosBarcode, 220, 120));
+                    context.DrawImage(barcodeImage, new Rect((width - 200) / 2, yPosBarcode, 230, 120));
 
                 
                 FormattedText numberText = new FormattedText(
@@ -277,7 +277,7 @@ namespace BadgeGenerator
                     CultureInfo.CurrentCulture,
                     FlowDirection.LeftToRight,
                     new Typeface("Verdana"),  
-                    13, 
+                    15, 
                     Brushes.Black,
                     new NumberSubstitution(),
                     1);
@@ -287,7 +287,7 @@ namespace BadgeGenerator
                     CultureInfo.CurrentCulture,
                     FlowDirection.LeftToRight,
                     new Typeface("Verdana"),
-                    13,
+                    15,
                     Brushes.Black,
                     new NumberSubstitution(),
                     1);
